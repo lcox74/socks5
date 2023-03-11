@@ -48,7 +48,7 @@ pub struct ClientIdentifier {
 }
 
 impl ClientIdentifier {
-    pub fn from_bytes(data: [u8; CLIENT_IDENTIFIER_MAX_LENGTH], len: usize) -> ClientIdentifier {
+    pub fn from_bytes(data: &[u8], len: usize) -> ClientIdentifier {
         let mut methods = Vec::new();
         for i in 2..len {
             methods.push(data[i]);
@@ -112,7 +112,7 @@ pub struct ClientRequest {
 }
 
 impl ClientRequest {
-    pub fn from_bytes(data: [u8; CLIENT_REQUEST_MAX_LENGTH], _len: usize) -> ClientRequest {
+    pub fn from_bytes(data: &[u8], _len: usize) -> ClientRequest {
 
         let mut req = ClientRequest {
             version: data[0],
